@@ -1,0 +1,124 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userPath() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function userDoc() {
+      return get(userPath()).data;
+    }
+
+    // Disabled users keep read access to their own profile (so the app can
+    // show "account disabled"), but lose everything else.
+    function isActive() {
+      return signedIn()
+        && exists(userPath())
+        && userDoc().get('status', 'active') != 'disabled';
+    }
+
+    function isAdmin() {
+      return isActive() && userDoc().get('role', 'user') == 'admin';
+    }
+
+    function isModerator() {
+      return isActive() && userDoc().get('role', 'user') in ['admin', 'moderator'];
+    }
+
+    function unchanged(field, fallback) {
+      return request.resource.data.get(field, fallback)
+        == resource.data.get(field, fallback);
+    }
+
+    match /usernames/{username} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid;
+      allow update: if isAdmin() || (
+        signedIn()
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.uid == request.auth.uid
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if signedIn() && (
+        request.auth.uid == userId ||
+        isModerator()
+      );
+
+      // Every self-created profile starts as an active regular user.
+      // Roles can only be raised by an admin (or the Admin SDK on the server).
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.get('role', 'user') == 'user'
+        && request.resource.data.get('status', 'active') == 'active';
+
+      allow update: if isAdmin() || (
+        signedIn()
+        && request.auth.uid == userId
+        && unchanged('role', 'user')
+        && unchanged('status', 'active')
+      );
+
+      allow delete: if isAdmin();
+
+      match /plans/{planId} {
+        allow read: if (isActive() && request.auth.uid == userId)
+          || isModerator();
+        allow write: if isActive() && request.auth.uid == userId;
+      }
+    }
+
+    // Lets the admin "all plans" page query every user's plans at once.
+    match /{path=**}/plans/{planId} {
+      allow read: if isModerator();
+    }
+
+    // Append-only activity log. Users can only record their own sign-in
+    // events; admin actions are written by admins or the server.
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.keys().hasOnly([
+          'uid', 'username', 'name', 'email', 'action', 'method',
+          'targetUid', 'targetName', 'details', 'userAgent', 'createdAt'
+        ])
+        && (
+          request.resource.data.action in ['signup', 'login', 'logout', 'login_blocked']
+          || (
+            request.resource.data.action in ['role_changed', 'status_changed']
+            && isAdmin()
+          )
+        );
+
+      allow update, delete: if false;
+    }
+
+    // Public, read-only share links. Only the host (or an admin) can edit.
+    match /sharedPlans/{shareId} {
+      function isOwnerOrAdmin() {
+        return isAdmin() || (
+          isActive() && resource.data.ownerId == request.auth.uid
+        );
+      }
+
+      allow read: if true;
+
+      allow create: if isActive()
+        && request.resource.data.ownerId == request.auth.uid;
+
+      allow update: if isOwnerOrAdmin() && unchanged('ownerId', '');
+
+      allow delete: if isOwnerOrAdmin();
+    }
+  }
+}

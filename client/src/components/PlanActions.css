@@ -1,0 +1,62 @@
+.plan-actions {
+  margin-top: 20px;
+}
+
+.plan-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.plan-action-btn {
+  border: 0;
+  background: #174c3b;
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plan-action-btn.secondary {
+  background: #fff;
+  color: #174c3b;
+  border: 1px solid #d7ddd8;
+}
+
+.plan-action-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.plan-actions-message {
+  margin-top: 12px;
+  color: #1f7a3f;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.plan-share-box {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e6e2d8;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.plan-share-url {
+  font-size: 13px;
+  color: #3d5a52;
+  word-break: break-all;
+}
+
+.plan-share-qr {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  background: #fff;
+}

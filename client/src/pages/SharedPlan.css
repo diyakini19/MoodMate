@@ -1,0 +1,97 @@
+.shared-plan-page {
+  min-height: 100vh;
+  background: #f7f4ed;
+}
+
+.shared-plan-main {
+  max-width: 760px;
+}
+
+.shared-eyebrow {
+  display: block;
+  color: #b17b1d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.shared-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e6e2d8;
+  border-radius: 18px;
+}
+
+.shared-card h2 {
+  margin: 0 0 14px;
+}
+
+.shared-place {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid #efeae0;
+}
+
+.shared-place:first-of-type {
+  border-top: 0;
+}
+
+.shared-place p {
+  color: #5d6f68;
+}
+
+.shared-google-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7046a9;
+  text-decoration: none;
+}
+
+.shared-google-link:hover {
+  text-decoration: underline;
+}
+
+.shared-place button {
+  border: 1px solid #d7ddd8;
+  background: #fff;
+  color: #174c3b;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-weight: 700;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.shared-tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.shared-tools-row button {
+  border: 0;
+  background: #174c3b;
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.shared-qr {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+}
+
+.shared-url {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #5d6f68;
+  word-break: break-all;
+}

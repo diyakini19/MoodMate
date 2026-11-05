@@ -1,0 +1,5 @@
+{
+  "name": "moodmate",
+  "private": true,
+  "description": "MoodMate workspace. Run the API from server/ and the Vite app from client/."
+}

@@ -1,0 +1,275 @@
+.preferences-page {
+  min-height: 100vh;
+  background: #f7f4ed;
+  padding: 0 0 70px;
+  color: #173f35;
+}
+
+.preferences-container {
+  width: min(850px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: 28px;
+}
+
+.preferences-back {
+  border: none;
+  background: transparent;
+  color: #66736d;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 45px;
+}
+
+.preferences-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.preferences-step {
+  color: #b17b1d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.preferences-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  letter-spacing: -2px;
+  margin: 12px 0;
+}
+
+.preferences-header p {
+  color: #718078;
+  font-size: 16px;
+}
+
+.selected-mood {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 9px 17px;
+  border-radius: 20px;
+  background: #e9eee8;
+  color: #52705f;
+  font-size: 13px;
+}
+
+.preference-section {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid #e5e8e3;
+  margin-bottom: 20px;
+}
+
+.preference-section h2 {
+  font-size: 21px;
+  margin-bottom: 5px;
+}
+
+.section-description {
+  color: #89938e;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.budget-card {
+  position: relative;
+  padding: 20px 10px;
+  border: 2px solid #e6e9e4;
+  border-radius: 16px;
+  background: white;
+  cursor: pointer;
+  color: #173f35;
+  transition: 0.2s;
+}
+
+.budget-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd8ce;
+}
+
+.budget-card.active {
+  border-color: #d09b36;
+  background: #fffaf0;
+}
+
+.budget-symbol {
+  display: block;
+  color: #d09b36;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.budget-card strong {
+  display: block;
+  font-size: 16px;
+}
+
+.budget-card small {
+  display: block;
+  color: #89938e;
+  margin-top: 5px;
+  font-size: 10px;
+}
+
+.selected-check {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  color: #d09b36;
+  font-weight: 700;
+}
+
+.custom-budget {
+  margin-top: 20px;
+}
+
+.custom-budget label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.budget-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe4df;
+  border-radius: 12px;
+  padding: 0 14px;
+  background: white;
+}
+
+.budget-input span {
+  color: #b17b1d;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.budget-input input {
+  width: 100%;
+  padding: 13px 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.budget-summary {
+  margin-top: 18px;
+  padding: 13px;
+  background: #edf3ed;
+  border-radius: 12px;
+  color: #52705f;
+  font-size: 13px;
+}
+
+.vibe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.vibe-card {
+  position: relative;
+  padding: 16px 10px;
+  border: 1px solid #e5e8e3;
+  border-radius: 13px;
+  background: white;
+  color: #36564a;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.vibe-card:hover {
+  border-color: #cbd8ce;
+}
+
+.vibe-card.active {
+  background: #edf3ed;
+  border-color: #6c947e;
+  font-weight: 600;
+}
+
+.vibe-emoji {
+  margin-right: 6px;
+}
+
+.vibe-check {
+  margin-left: 6px;
+  color: #52705f;
+}
+
+.group-summary {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  background: #eaf1ea;
+  border-radius: 18px;
+}
+
+.summary-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+}
+
+.group-summary strong {
+  display: block;
+}
+
+.group-summary p {
+  margin-top: 5px;
+  color: #718078;
+  font-size: 12px;
+}
+
+.preferences-continue {
+  display: block;
+  margin: auto;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 30px;
+  background: #174c3b;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.preferences-continue:disabled {
+  background: #c9cfca;
+  cursor: not-allowed;
+}
+
+.preferences-continue:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(23, 76, 59, 0.2);
+}
+
+@media (max-width: 700px) {
+  .preferences-header h1 {
+    font-size: 38px;
+  }
+
+  .budget-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vibe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

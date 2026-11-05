@@ -1,0 +1,537 @@
+/* =========================================
+   MOODMATE - MOOD PAGE
+========================================= */
+
+.mood-page {
+  min-height: 100vh;
+  padding: 0 0 70px;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 190, 210, 0.35),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(190, 210, 255, 0.3),
+      transparent 30%
+    ),
+    #faf9fc;
+  color: #24212a;
+}
+
+.mood-container {
+  width: min(920px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: 28px;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-btn {
+  border: none;
+  background: white;
+  color: #5f5968;
+  padding: 10px 17px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 5px 20px rgba(30, 20, 50, 0.07);
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 20, 50, 0.1);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.mood-header {
+  text-align: center;
+  padding: 65px 20px 40px;
+}
+
+.small-label {
+  display: inline-block;
+  color: #8050d3;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mood-header h1 {
+  margin: 14px 0;
+  font-size: clamp(40px, 6vw, 62px);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.mood-header p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #77727e;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   MOOD GRID
+========================================= */
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* =========================================
+   MOOD CARD
+========================================= */
+
+.mood-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  width: 100%;
+  min-height: 115px;
+
+  padding: 22px;
+
+  text-align: left;
+
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #ebe7f0;
+  border-radius: 22px;
+
+  cursor: pointer;
+
+  color: #24212a;
+
+  box-shadow:
+    0 10px 30px rgba(40, 20, 70, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.mood-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #d8c8f0;
+
+  box-shadow:
+    0 15px 35px rgba(40, 20, 70, 0.09);
+}
+
+/* Selected */
+
+.mood-card.selected {
+  border-color: #9a62ff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf7ff,
+      #fff7fa
+    );
+
+  box-shadow:
+    0 12px 35px rgba(143, 92, 255, 0.14);
+}
+
+/* =========================================
+   EMOJI
+========================================= */
+
+.mood-emoji {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #f5efff;
+
+  font-size: 30px;
+
+  transition: 0.2s ease;
+}
+
+.mood-card:hover .mood-emoji {
+  transform: scale(1.05);
+}
+
+.mood-card.selected .mood-emoji {
+  background: #eee3ff;
+}
+
+/* =========================================
+   MOOD TEXT
+========================================= */
+
+.mood-card > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.mood-card h3 {
+  margin: 0 0 6px;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #2b2632;
+}
+
+.mood-card p {
+  margin: 0;
+
+  color: #85808b;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   CHECK
+========================================= */
+
+.check {
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1.5px solid #ddd6e7;
+  border-radius: 50%;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.mood-card.selected .check {
+  background: #8f5cff;
+  border-color: #8f5cff;
+}
+
+/* =========================================
+   CONTINUE BUTTON
+========================================= */
+
+.continue-btn {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 17px 22px;
+
+  border: none;
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #8f5cff,
+      #f35d91
+    );
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px rgba(143, 92, 255, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.continue-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 35px rgba(143, 92, 255, 0.28);
+}
+
+.continue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =========================================
+   OPTION A / B CHOICE
+========================================= */
+
+.mood-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.mood-choice-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 28px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #ebe7f0;
+  border-radius: 24px;
+  color: #24212a;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(40, 20, 70, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mood-choice-card:hover {
+  transform: translateY(-3px);
+  border-color: #d8c8f0;
+  box-shadow: 0 15px 35px rgba(40, 20, 70, 0.09);
+}
+
+.mood-choice-card.is-primary {
+  border-color: #c9adff;
+  background: linear-gradient(135deg, #faf7ff, #fff7fa);
+}
+
+.mood-choice-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8050d3;
+}
+
+.mood-choice-emoji {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: #f5efff;
+  font-size: 30px;
+}
+
+.mood-choice-card h3 {
+  margin: 4px 0 0;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.mood-choice-card p {
+  margin: 0;
+  color: #85808b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mood-choice-cta {
+  margin-top: auto;
+  padding-top: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  color: #8f5cff;
+}
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-progress {
+  margin-bottom: 22px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #77727e;
+}
+
+.quiz-progress-bar {
+  height: 6px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: #ebe7f0;
+  overflow: hidden;
+}
+
+.quiz-progress-bar div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(100deg, #8f5cff, #f35d91);
+  transition: width 0.25s ease;
+}
+
+.quiz-question {
+  margin: 0 0 20px;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+
+.mood-card.quiz-option {
+  min-height: 88px;
+}
+
+.quiz-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.mood-link-btn {
+  border: none;
+  background: transparent;
+  color: #8050d3;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.mood-link-btn:hover {
+  text-decoration: underline;
+}
+
+.quiz-result {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 34px 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #ebe7f0;
+  border-radius: 26px;
+  box-shadow: 0 12px 35px rgba(143, 92, 255, 0.1);
+}
+
+.quiz-result-emoji {
+  display: block;
+  font-size: 56px;
+  margin-bottom: 10px;
+}
+
+.quiz-result h2 {
+  margin: 10px 0 8px;
+  font-size: 30px;
+  letter-spacing: -0.8px;
+}
+
+.quiz-result-reason {
+  margin: 0;
+  color: #5f5968;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.quiz-result-runner {
+  margin: 10px 0 0;
+  color: #85808b;
+  font-size: 14px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .mood-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .mood-page {
+    padding: 25px 15px 55px;
+  }
+
+  .mood-header {
+    padding: 50px 10px 30px;
+  }
+
+  .mood-header h1 {
+    font-size: 42px;
+  }
+
+  .mood-header p {
+    font-size: 15px;
+  }
+
+  .mood-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mood-card {
+    min-height: 100px;
+    padding: 18px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+  .mood-header h1 {
+    font-size: 36px;
+  }
+
+  .mood-card {
+    gap: 13px;
+    padding: 15px;
+  }
+
+  .mood-emoji {
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+    border-radius: 15px;
+  }
+
+  .mood-card h3 {
+    font-size: 16px;
+  }
+
+  .mood-card p {
+    font-size: 12px;
+  }
+
+  .check {
+    width: 23px;
+    height: 23px;
+  }
+}
+

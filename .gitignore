@@ -1,0 +1,20 @@
+node_modules
+dist
+.env
+.env.local
+client/.env
+client/.env.local
+server/serviceAccountKey.json
+*.log
+.DS_Store
+.vscode
+.idea
+client/android/.gradle
+client/android/app/build
+client/android/build
+client/android/capacitor-cordova-android-plugins/build
+*.apk
+*.aab
+Diya Final Project/
+*.zip
+node_modules/
