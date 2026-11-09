@@ -103,8 +103,8 @@ This starts the frontend and backend in separate terminal windows and opens the 
 
 ## 👩‍💻 Team Members
 
-1. Smruti Vijay Parthe
-2. Diya Vaibhav Kini
+1. Diya Vaibhav Kini 
+2. Smruti Vijay Parthe 
 3. Janhavi Bharath Nanaware
 
 ---
